@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nate Donato</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="main-container">
+    <section class="content-container">
+      <div class="col colA">
+        <h1>Nate Donato</h1>
+        <p>Senior Developer @ <a href="https://mojave.agency">Mojave</a></p>
+        <p class="tagline">I make websites for work & for fun</p>
+      </div>
+      <div class="col colB">
+        <ul class="main-links">
+          <li><a href="./about">About</a></li>
+          <li><a href="https://www.natedonato.com/cv/">CV</a></li>
+          <li><a href="https://www.natedonato.com/projects/">Web projects</a></li>
+          <li><a href="./games">Games</a></li>
+          <li><a href="https://www.natedonato.com/generative/">GenArt</a></li>
+          <li><a href="./blog">Blog</a></li>
+          <li><a href="https://www.natedonato.com/zines/">Zines</a></li>
+          <li class="social-container"><button>Social links</button>
+            <ul class="social-links">
+              <li><a href="https://codepen.io/natedonato/">CodePen</a></li>
+              <li><a href="https://github.com/natedonato/">GitHub</a></li>
+              <li><a href="https://www.linkedin.com/in/natedonato/">LinkedIn</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </div>
+  <footer>
+    © Nate Donato 2023
+  </footer>
+
+  <script>
+    let links = document.querySelectorAll("a");
+    setTimeout( () => setInterval(hueShiftLinks, 3000), 2000);
+
+    function hueShiftLinks(){
+        let randomHue = Math.floor(Math.random() * 360);
+        let randomOffset = 5 + Math.floor(Math.random()* 40);
+        let randomSign = Math.random() > 0.5 ? 1 : -1
+      for(const [index, link] of links.entries()){
+        // light mode?
+        //   link.style.color = `hsl(${(randomHue + randomOffset * index * randomSign) % 360}, 100%, 34%)`
+          link.style.color = `hsl(${(randomHue + randomOffset * index * randomSign) % 360}, 70%, 69%)`
+      }
+    }
+  </script>
+</body>
+
+</html>

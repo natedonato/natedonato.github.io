@@ -1,0 +1,182 @@
+/* fonts */
+@font-face {
+  font-family: LatinModernMono;
+  src: url("./assets/fonts/lmmono10-regular.otf") format("opentype");
+  font-weight: 400;
+  text-rendering: optimizeLegibility;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+#root,
+#__next {
+  isolation: isolate;
+}
+
+/* end boilerplate */
+
+body {
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+  font-family: LatinModernMono, "Courier New", Courier, monospace;
+  background: black;
+  color: rgb(203, 203, 203);
+  /* font-weight: bold; */
+}
+
+h1 {
+  color: rgb(229, 229, 229);
+}
+
+a {
+  display: inline-block;
+}
+
+.main-container {
+  min-height: 95%;
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  animation: fadeIn 3s forwards 1s ease;
+}
+
+.tagline {
+  font-size: 13px;
+  margin-top: 12px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.content-container {
+  display: flex;
+  margin: 0 auto;
+  max-width: 700px;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.colA {
+  text-align: right;
+}
+
+.colB {
+  border-left: 1px solid white;
+  margin-left: 20px;
+  width: 300px;
+}
+
+a,
+a.visited {
+  color: inherit;
+  text-decoration: none;
+  transition: all 1s ease;
+}
+
+button {
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  padding-left: 15px;
+}
+
+.social-links {
+  display: none;
+  position: absolute;
+}
+
+.social-links li {
+  list-style: circle;
+}
+
+.social-container:hover .social-links {
+  display: block;
+}
+
+footer {
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .content-container {
+    flex-direction: column;
+  }
+  .colA {
+    text-align: left;
+    margin-bottom: 10px;
+  }
+
+  .colB {
+    text-align: center;
+    border-left: none;
+    border-top: 1px solid white;
+    margin-left: 0;
+    padding-top: 20px;
+  }
+
+  .social-links {
+    text-align: center;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  .social-links li {
+    list-style: none;
+  }
+
+  ul {
+    padding-left: 0;
+  }
+
+  .tagline {
+    margin-top: 4px;
+  }
+}
