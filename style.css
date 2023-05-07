@@ -159,13 +159,17 @@ footer {
     border-left: none;
     border-top: 1px solid white;
     margin-left: 0;
-    padding-top: 20px;
+    padding-top: 16px;
   }
 
   .social-links {
     text-align: center;
     left: 50%;
     transform: translate(-50%, 0);
+  }
+
+  .li{
+    margin: 8px;
   }
 
   .social-links li {

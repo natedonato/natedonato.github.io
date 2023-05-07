@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Nate Donato</title>
+  <title>About Nate</title>
+  <link rel="preload" href="../assets/fonts/lmmono10-regular.otf" as="font" type="font/otf" crossorigin>
   <!-- <link rel="stylesheet" href="style.css"> -->
   <style>
     @font-face {
@@ -13,6 +14,7 @@
       src: url("../assets/fonts/lmmono10-regular.otf") format("opentype");
       font-weight: 400;
       text-rendering: optimizeLegibility;
+      font-display: swap;
     }
 
     *,
@@ -92,7 +94,7 @@
     .container {
       margin: 0 auto;
       display: flex;
-      max-width: 1000px;
+      max-width: 980px;
     }
 
     a,
@@ -102,8 +104,9 @@
       transition: all 1s ease;
     }
 
-    span{
+    span {
       transition: color 1s ease;
+      text-decoration: underline dotted;
     }
 
     /* spinner */
@@ -418,7 +421,8 @@
 
       </div>
       <div class="content">
-        <p>I&#39;m Nate Donato. I live in Oakland CA and root for the <span title="LETS GO OAKLAND">Athletics<img class="popup" src="../assets/about/as.JPG" alt="As"></span>. I&#39;m bad at picking favorites, but
+        <p>I&#39;m Nate Donato. I live in Oakland CA and root for the <span title="LETS GO OAKLAND">Athletics<img
+              class="popup" src="../assets/about/as.JPG" alt="As"></span>. I&#39;m bad at picking favorites, but
           my
           favorite color has traditionally been green. I like coffee, dumplings, bonsai trees, and <a
             href="https://natedonato.com/rain">rainy days</a>. </p>
@@ -432,27 +436,31 @@
             href="https://natedonato.com/cv">CV</a> page.</p>
         <p>Prior to dev work, I did stints as a subsitute teacher (K-12), an SAT test prep tutor, and a grocery clerk at
           the
-          <a href="https://www.instagram.com/stargrocerberkeley/">best grocery store ever</a>. I <span title="Shoutout to professors Chris Connery and Rob Wilson">graduated from UC Santa
-          Cruz<img class="popup" src="../assets/about/ucsc.gif" alt="diploma"></span>
-          with a BA in Literature, which makes me a <span title="slug life 4 life">banana slug<img class="popup" src="../assets/about/slug.jpeg" alt="banana slug"></span>.
+          <a href="https://www.instagram.com/stargrocerberkeley/">best grocery store ever</a>. I <span
+            title="Shoutout to professors Chris Connery and Rob Wilson">graduated from UC Santa
+            Cruz<img class="popup" src="../assets/about/ucsc.gif" alt="diploma"></span>
+          with a BA in Literature, which makes me a <span title="slug life 4 life">banana slug<img class="popup"
+              src="../assets/about/slug.jpeg" alt="banana slug"></span>.
         </p>
         <p>Outside of work I&#39;m always up to different stuff like making <a
             href="https://natedonato.com/games">games</a>
           and
           <a href="https://natedonato.com/generative">generative artwork</a> for fun, writing <a
-            href="https://natedonato.com/zines">zines</a>, drawing animated gifs, taking photos on my <span title="Minolta x370">film camera<img class="popup" src="../assets/about/minolta.gif" alt=""></span>,
+            href="https://natedonato.com/zines">zines</a>, drawing animated gifs, taking photos on my <span
+            title="Minolta x370">film camera<img class="popup" src="../assets/about/minolta.gif" alt=""></span>,
           studying
           Japanese, playing <a href="https://lichess.org/@/naet">Chess</a> or <a
-            href="https://online-go.com/player/787153/">Go</a>, making music, enjoying rainy days, reading the Sunday
+            href="https://online-go.com/player/787153/" style="white-space: nowrap;">
+            Go (囲碁)</a>, making music, enjoying rainy days, reading the Sunday
           newspaper,
-          or spending time with my <span title="Dom, LOML">beautiful partner <img class="popup" src="../assets/about/dom.gif
+          or spending time with my <span title="Dom, LOML">beautiful partner<img class="popup" src="../assets/about/dom.gif
             " alt="Dom"></span> and new baby boy.
         </p>
         <p>If you&#39;re interested in hiring me please reach out via <a
             href="https://www.linkedin.com/in/natedonato/">LinkedIn</a>. If you&#39;re interested in friendship please
           please
-          reach out via other channels!</p>
-        <p>Thanks for stopping by my little web corner. Hope you enjoy the stay.</p>
+          reach out via <span title="Pigeon post being preferred">other channels<img class="popup" src="../assets/about/pigeon.gif" alt="pigeon"></span>.</p>
+        <p>Thanks for stopping by my little web corner! Hope you enjoy the stay.</p>
         <p><a href="../">&lt;== Go back home</a></p>
       </div>
     </div>
@@ -461,7 +469,7 @@
     // give random positions to images
     let imgs = document.querySelectorAll('.popup')
 
-    function positionImage(img){
+    function positionImage(img) {
       console.log(img);
       let w = window.innerWidth;
       let h = window.innerHeight;
@@ -469,11 +477,11 @@
 
       let imageW = img.offsetWidth;
       let imageH = img.offsetHeight * 1.1;
-      let bounds = [w - imageW - 2*padding, h - imageH - 2*padding];
+      let bounds = [w - imageW - 2 * padding, h - imageH - 2 * padding];
 
       img.style.left = Math.floor(Math.random() * bounds[0] + padding) + "px";
       img.style.top = Math.floor(Math.random() * bounds[1] + padding) + "px";
-        
+
     }
 
     function randomPosition() {
@@ -492,7 +500,7 @@
     let initialHeight = window.innerHeight;
     window.addEventListener("resize", (e) => {
 
-      if(window.innerWidth !== initialWidth || Math.abs(initialHeight - window.innerHeight) > 300){
+      if (window.innerWidth !== initialWidth || Math.abs(initialHeight - window.innerHeight) > 300) {
         clearTimeout(debounce);
         debounce = setTimeout(randomPosition, 200);
       }
@@ -500,9 +508,9 @@
 
     // color links
     let links = document.querySelectorAll("a, span");
-    // let spans = document.querySelectorAll()
+
     let circle = document.querySelector('.circle');
-    
+
     setTimeout(() => hueShiftLinks(), 3000);
     setTimeout(() => setInterval(hueShiftLinks, 5000), 3000);
     function hueShiftLinks() {
