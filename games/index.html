@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Games | Nate Donato</title>
+  <meta name="description" content="Nate Donato - Senior Developer @ Mojave.  I make websites and this is one of them.">
+  <link rel="preload" href="../assets/fonts/lmmono10-regular.otf" as="font" type="font/otf" crossorigin>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="main-container">
+    <section class="content-container">
+      <div class="col colA">
+        <h1 style="transform: rotate(-5deg)">NateGames</h1>
+        <p style="transform: rotate(2deg)">made for fun by <a href="../">Nate Donato</a></p>
+        <p class="tagline" style="margin-top: 15px; transform: rotate(-1.5deg)">more coming sometime soon?</p>
+      </div>
+      <div class="col colB">
+        <ul class="main-links">
+          <li class="yr">
+            <h3>2022:</h3>
+          </li>
+          <li><a href="https://squigglegolf.com">SquiggleGolf</a> -
+            A 2d minigolf platformer game. New courses algorithmically generated every day! <br><small>HTML Canvas,
+              Matter.JS, Rough.js</small>
+          </li>
+          <li class="yr">
+            <h3>2019:</h3>
+          </li>
+          <li><a href="https://landlside.natedonato.com/">Landslide</a> -
+            A climb to the top scramble platformer with high score leaderboard <br><small>Custom JS physics, Node/Express
+              API, NoSQL Mongodb Atlas</small>
+          </li>
+          <li style="padding-bottom: 0px;"><a href="https://www.natedonato.com/dresscat/cat.html/">DressCat</a> - A
+            simple but cute dress the cat toy. My first ever game <br><small>HTML CSS JS, Photoshop</small></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <a href="../">&lt;== back home</a>
+    <br>
+    © Nate Donato 2023
+    <br><br>
+  </footer>
+
+  <script>
+    let links = document.querySelectorAll("a");
+    setTimeout(() => setInterval(hueShiftLinks, 3000), 2000);
+
+    function hueShiftLinks() {
+      let randomHue = Math.floor(Math.random() * 360);
+      let randomOffset = 5 + Math.floor(Math.random() * 40);
+      let randomSign = Math.random() > 0.5 ? 1 : -1
+      for (const [index, link] of links.entries()) {
+        // light mode?
+        //   link.style.color = `hsl(${(randomHue + randomOffset * index * randomSign) % 360}, 100%, 34%)`
+        link.style.color = `hsl(${(randomHue + randomOffset * index * randomSign) % 360}, 70%, 69%)`
+      }
+    }
+  </script>
+</body>
+
+</html>

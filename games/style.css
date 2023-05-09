@@ -1,7 +1,7 @@
 /* fonts */
 @font-face {
   font-family: LatinModernMono;
-  src: url("./assets/fonts/lmmono10-regular.otf") format("opentype");
+  src: url("../assets/fonts/lmmono10-regular.otf") format("opentype");
   font-weight: 400;
   text-rendering: optimizeLegibility;
 }
@@ -52,9 +52,20 @@ body {
   line-height: 1.2;
   -webkit-font-smoothing: antialiased;
   font-family: LatinModernMono, "Courier New", Courier, monospace;
-  background: black;
   color: rgb(203, 203, 203);
   /* font-weight: bold; */
+  background: black;
+  animation: bgFade 2s ease forwards 1s;
+}
+
+@keyframes bgFade{
+  from{
+    background: black;
+  }
+  to{
+    background: rgb(9, 0, 44);
+  }
+
 }
 
 h1 {
@@ -66,11 +77,11 @@ a {
 }
 
 .main-container {
-  min-height: 95%;
+  min-height: 92%;
   display: flex;
   align-items: center;
   opacity: 0;
-  animation: fadeIn 3s forwards 1s ease;
+  animation: fadeIn 1s forwards 1s ease;
 }
 
 .tagline {
@@ -122,6 +133,13 @@ button {
 
 li {
   list-style: none;
+  padding-left: 10px;
+
+  padding-bottom: 10px;
+}
+
+li.yr {
+  padding-left: 0;
 }
 
 ul {
@@ -150,14 +168,19 @@ footer {
     flex-direction: column;
   }
   .colA {
-    text-align: left;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  h1{
     margin-bottom: 10px;
   }
 
   .colB {
-    text-align: center;
+    text-align: left;
+    width: 320px;
     border-left: none;
-    border-top: 1px solid white;
+    /* border-top: 1px solid white; */
     margin-left: 0;
     padding-top: 12px;
   }

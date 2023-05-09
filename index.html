@@ -26,7 +26,7 @@
           <li><a href="https://www.natedonato.com/projects/">Web projects</a></li>
           <li><a href="./games">Games</a></li>
           <li><a href="https://www.natedonato.com/generative/">GenArt</a></li>
-          <li><a href="./blog">Blog</a></li>
+          <!-- <li><a href="./blog">Blog</a></li> -->
           <li><a href="https://www.natedonato.com/zines/">Zines</a></li>
           <li class="social-container"><button>Social links</button>
             <ul class="social-links">
@@ -45,16 +45,16 @@
 
   <script>
     let links = document.querySelectorAll("a");
-    setTimeout( () => setInterval(hueShiftLinks, 3000), 2000);
+    setTimeout(() => setInterval(hueShiftLinks, 3000), 2000);
 
-    function hueShiftLinks(){
-        let randomHue = Math.floor(Math.random() * 360);
-        let randomOffset = 5 + Math.floor(Math.random()* 40);
-        let randomSign = Math.random() > 0.5 ? 1 : -1
-      for(const [index, link] of links.entries()){
+    function hueShiftLinks() {
+      let randomHue = Math.floor(Math.random() * 360);
+      let randomOffset = 5 + Math.floor(Math.random() * 40);
+      let randomSign = Math.random() > 0.5 ? 1 : -1
+      for (const [index, link] of links.entries()) {
         // light mode?
         //   link.style.color = `hsl(${(randomHue + randomOffset * index * randomSign) % 360}, 100%, 34%)`
-          link.style.color = `hsl(${(randomHue + randomOffset * index * randomSign) % 360}, 70%, 69%)`
+        link.style.color = `hsl(${(randomHue + randomOffset * index * randomSign) % 360}, 70%, 69%)`
       }
     }
   </script>
