@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Games | Nate Donato</title>
-  <meta name="description" content="Nate Donato - Senior Developer @ Mojave.  I make websites and this is one of them.">
+  <meta name="description" content="A collection of free online games by Nate Donato.">
   <link rel="preload" href="../assets/fonts/lmmono10-regular.otf" as="font" type="font/otf" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -31,11 +31,11 @@
           <li class="yr">
             <h3>2019:</h3>
           </li>
-          <li><a href="https://landlside.natedonato.com/">Landslide</a> -
+          <li><a href="https://www.natedonato.com/landslideJS/">Landslide</a> -
             A climb to the top scramble platformer with high score leaderboard <br><small>Custom JS physics, Node/Express
               API, NoSQL Mongodb Atlas</small>
           </li>
-          <li style="padding-bottom: 0px;"><a href="https://www.natedonato.com/dresscat/cat.html/">DressCat</a> - A
+          <li style="padding-bottom: 0px;"><a href="https://www.natedonato.com/dresscat/cat.html">DressCat</a> - A
             simple but cute dress the cat toy. My first ever game <br><small>HTML CSS JS, Photoshop</small></li>
         </ul>
       </div>
@@ -50,8 +50,8 @@
 
   <script>
     let links = document.querySelectorAll("a");
-    setTimeout(() => setInterval(hueShiftLinks, 3000), 2000);
-
+    setTimeout(hueShiftLinks, 1000);
+    setInterval(hueShiftLinks, 3000)
     function hueShiftLinks() {
       let randomHue = Math.floor(Math.random() * 360);
       let randomOffset = 5 + Math.floor(Math.random() * 40);

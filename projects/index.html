@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Nate Donato</title>
+  <meta name="description"
+    content="I'm Nate Donato and here are some of my web projects including games, visualizers, full stack applications, and more" />
+  <style>
+    /* fonts */
+    @font-face {
+      font-family: LatinModernMono;
+      src: url("../assets/fonts/lmmono10-regular.otf") format("opentype");
+      font-weight: 400;
+      text-rendering: optimizeLegibility;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    * {
+      margin: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    img,
+    picture,
+    video,
+    canvas,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    input,
+    button,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      overflow-wrap: break-word;
+    }
+
+    #root,
+    #__next {
+      isolation: isolate;
+    }
+
+    /* end boilerplate */
+
+    body {
+      line-height: 1.2;
+      -webkit-font-smoothing: antialiased;
+      font-family: LatinModernMono, "Courier New", Courier, monospace;
+      /* background: black; */
+      background: rgb(3 23 70);
+      color: #fffdec;
+      /* font-weight: bold; */
+    }
+
+    h1 {
+      color: rgb(229, 229, 229);
+    }
+
+    a,
+    a.visited {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .project-list {
+      padding-left: 30px;
+    }
+
+    .project-list h2 {
+      margin: 40px 0px 15px;
+    }
+
+    .project-list p {
+      padding-left: 40px;
+      margin: 10px 00px;
+    }
+
+    .project-list h3 {
+      padding-left: 20px;
+    }
+
+    .container{
+      display: flex;
+      max-width: 1000px;
+      margin: auto auto;
+      align-items: flex-start;
+      /* min-height: 100%; */
+      padding-top: 50px;
+      padding: 50px 20px;
+    }
+    .info{
+      position: sticky;
+      top: 100px;
+      text-align: left;
+      border: 2px dashed white;
+      border-radius: 5px;
+      padding: 0px 10px 5px;
+    }
+
+    footer{
+      text-align: center;
+    }
+
+
+    @media (max-width: 900px){
+      .container{
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 10px;
+      }
+      .info{
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-top: 4px;
+      }
+      .project-list{
+        padding-left: 0;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="info">
+      <h1>NateProjects</h1>
+      <p>A selection of past personal web projects.</p>
+    </div>
+    <div class="project-list">
+      <h2>Games</h2>
+      <p>Check my <a href="https://www.natedonato.com/generative/">games page</a> to play some web games I've made.</p>
+      <h2>Generative Art</h2>
+      <p>Visit my <a href="https://www.natedonato.com/generative/">generative art page</a> to see some of my creative
+        coding
+        projects.</p>
+      <h2>Web Projects</h2>
+      <h3>2022:</h3>
+      <p><a href="https://twitter.com/CubesEveryday">Cuboid Producer Bot</a> - An automated twitter bot generating
+        unique
+        cubes daily using GCP, node-canvas. Generated 604 images before free API access was ended by Elon Musk on April
+        28th
+        2023</p>
+      <p><a href="../rain">Rain</a> - A little rainy day soundscape and particle effect in native JS.</p>
+      <h3>2019:</h3>
+      <p><a href="https://github.com/natedonato/instagraff">Instagraff</a> - fullstack Instagram clone app built with
+        Ruby
+        on Rails, React, Redux, and AWS S3. Currently
+        offline, previously hosted on Heroku free.</p>
+      <p><a href="https://www.natedonato.com/button-thing/">SneakyButton</a> - A button that doesn't want to be pressed!
+      </p>
+      <p><a href="https://www.natedonato.com/meditate/">Meditate</a> - Online meditation timer with countdown,
+        soundscapes,
+        and calming background images built with React (CRA) </p>
+      <p><a href="https://www.natedonato.com/dijkstra/">Dijkstra</a> - Pathfinding algorithm visualizer and playground
+        rendered by HTML Canvas and
+        vanilla JS</p>
+      <p><a href="https://www.natedonato.com/bartsigns/">BART Signs</a> - SF's Embarcadero station with live updating
+        train
+        departure time signs using official BART api and
+        vanilla JS</p>
+      <p><a href="https://www.natedonato.com/wordniktest/">BandNames</a> - A tool for generating new band names, powered
+        by
+        <a>Wordnik</a> api integration
+      </p>
+      <p><a href="https://www.natedonato.com/zenboxes/">Zen boxes</a> - Relaxing visualizer / browser toy, pure CSS and
+        JS
+      </p>
+      <p><a href="https://www.natedonato.com/dejumble/">Dejumble</a> - Small personal tool to help solving the daily <a
+          href="https://en.wikipedia.org/wiki/Jumble">Jumble</a> puzzle. Uses a cusom pre-processed dictionary of words
+        with
+        characters sorted alphabetically for instant response finding anagrams.</p>
+      <p><a href="https://www.natedonato.com/snail-fe/">Snail</a> - A silly slow moving message delivery</p>
+      <p><a href="https://www.natedonato.com/leekspin/">NateLeekspin</a> - A personal tribute to the original <a
+          href="https://en.wikipedia.org/wiki/Loituma_Girl">viral flash animation</a> but modernized to HTML5</p>
+      <p><a href="https://www.natedonato.com/watchmen/">Watchmen</a> - Creative fan site test with comic-inspired CSS
+        stylings (unfinished / abandoned)</p>
+      <p><a href="https://www.natedonato.com/circus/day1/colors.html">Strobe Light</a> - Micro strobe light web app
+        (epilipsy warning!)</p>
+      <p><a href="https://www.natedonato.com/circus/day3/wigglers.html">Succulent Spinners</a> - Playful interactive
+        widget
+      </p>
+      <h2>Interviews / Code Challenges</h2>
+      <h3>2022:</h3>
+      <p><a href="https://www.natedonato.com/todo-interview/">TypeScript Todo List</a> - Todo app with loading states,
+        drag
+        and drop
+        sort, persistent local storage state (React, TypeScript)</p>
+      <h3>2019:</h3>
+      <p><a href="https://www.natedonato.com/studentInfo/">Student Info</a> - Table of student info listings with
+        searches,
+        filters, and adding tags as features
+        (React)</p>
+      <p><a href="https://www.natedonato.com/kanban-challenge/">Kanban</a> - A simple Kanban board built exactly to
+        specs
+        with React. Add cards, move cards to different lists, persistent browser storage state.</p>
+      <p><a href="https://www.natedonato.com/reactstopwatch/">Multi Stopwatch</a> - React component for creating and
+        destroying a collection of online stopwatches / timers</p>
+    </div>
+  </div>
+  
+  <footer>
+    <a href="../">&lt;== back home</a>
+    <br>
+    © Nate Donato 2023
+    <br><br>
+  </footer>
+
+  <script>
+    let colors = "#0d2357#00d6ba#fdaac6#ff569c#fe1162#fff4ac";
+    // let colors = "#372e4d#5f699c#65aed6#a4ebcc#effae6#f0b38d#b56d7f";
+    colors = colors.split("#").map(el => "#" + el);
+
+    let bgColor = colors[1];
+    // document.body.style.background = bgColor;
+
+    let linkColors = colors.slice(2);
+
+    let links = document.querySelectorAll("a");
+
+    links.forEach((link, idx) => {
+      link.style.color = linkColors[idx % linkColors.length];
+    })
+
+  </script>
+</body>
+
+</html>
