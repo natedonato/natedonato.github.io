@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rain</title>
+  <meta name="description" content="A rainy day web animation created in vanilla JavaScript and HTML5 Canvas by Nate Donato. Includes generative raindrops, lightning, and sound effects.">
+  <meta property="og:image" content="https://www.natedonato.com/rain/meta.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <audio id="rain" src="./rain.mp3" loop></audio>
+  <audio id="thunder" src="./thunder.mp3"></audio>
+  <!-- <audio id="shishi" src="./shishiodoshi.mp3" loop></audio> -->
+</head>
+<style>
+  html {
+    height: 100%;
+    background: hwb(0 89% 11%);
+  }
+
+  body {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+  }
+
+  #overlay {
+    margin-top: -40px;
+    text-align: center;
+    width: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    color: #262626;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 2s;
+    pointer-events: none;
+  }
+
+  #bodycontent {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 16px;
+    transition: opacity 5s;
+    opacity: 0.1;
+
+  }
+
+  #container {
+    flex-shrink: 0;
+    width: 95%;
+    max-width: 700px;
+
+  }
+
+  canvas {
+    width: 100%;
+    border: 2px solid rgb(34, 34, 34);
+    border-radius: 2px;
+    background-image: url("bg.png");
+    background-size: cover;
+  }
+
+  p {
+    padding: 0px 10px;
+    font-family: 'Courier New', Courier, monospace;
+    color: #262626;
+    font-size: 16px;
+    margin: 1.5em 0;
+  }
+
+  .detail {
+    font-size: 12px;
+    color: #555555;
+    padding: 0px 20px;
+    margin: 0;
+  }
+
+  .detail a {
+    display: inline-block;
+    text-decoration: none;
+    color: #2154ff;
+  }
+
+  .detail a:hover {
+    transition: transform 150ms, color .2s;
+    transform: scale(1.08) rotate(-1.5deg);
+    color: #ff14f3;
+  }
+</style>
+
+<body>
+  <div id="overlay">click/tap to enjoy the rain<br><span style="opacity: 0.8; font-size: 12px">(audio will play)</span>
+  </div>
+  <div id="bodycontent">
+    <div id='container'>
+      <canvas id="c" width="700" height="476">
+    </div>
+    </canvas>
+    <p>rainy days are some of my favorites</p>
+    <p class="detail">made with vanilla JS, ❤️ + ☕ by <a href="https://www.natedonato.com/">Nate Donato</a><span
+        style="opacity: 0.8; font-size: 10px; line-height: 12px; white-space: pre"> - © 2023</span></p>
+  </div>
+</body>
+<script>
+  let audioActive = false;
+  document.addEventListener('click', function handler(event) {
+    audioActive = true;
+    document.getElementById('bodycontent').style.opacity = 1;
+    document.getElementById('overlay').style.opacity = 0;
+    // document.getElementById("shishi").volume = 0.15;
+    // document.getElementById("shishi").play()
+    document.getElementById("rain").play()
+    document.removeEventListener('click', handler);
+  });
+
+
+
+  const canvas = document.getElementById('c');
+
+  /** @type {CanvasRenderingContext2D} */
+  const ctx = canvas.getContext('2d');
+
+  let rect = canvas.getBoundingClientRect();
+
+  // increase the actual size of our canvas
+  canvas.width = rect.width * devicePixelRatio;
+  canvas.height = rect.height * devicePixelRatio;
+
+  // ensure all drawing operations are scaled
+  ctx.scale(devicePixelRatio, devicePixelRatio);
+
+  // // scale everything down using CSS
+  // canvas.style.width = rect.width + 'px';
+  // canvas.style.height = rect.height + 'px';
+
+
+  let start, previousTimeStamp, lastTimeStamp;
+  let lightningFlash = null
+  let splashSize = 20;
+
+  let rainHeight = 80;
+  let rainSlope = -8;
+  let rainAlpha = 0.8;
+  let rainSpeed = 1.3;
+  // rainSpeed = 0.5
+
+  function createDrop() {
+    let alpha = rainAlpha * Math.random();
+    let y = -rainHeight - Math.random() * canvas.height;
+    let x = Math.random() * canvas.width;
+    let height = rainHeight + (Math.random() - 0.5) * rainHeight * 1.2;
+    let slope = rainSlope + (Math.random() - 0.5) * rainSlope / 2;
+    let speed = rainSpeed + (Math.random() - 0.5) * rainSpeed / 2;
+    let cut = Math.random() * (canvas.height / 2 - height / 3);
+
+    // let cut = 10;
+    const drop = {
+      y: y,
+      x: x,
+      height: height,
+      slope: slope,
+      alpha: alpha,
+      speed: speed,
+      cut: cut
+    }
+    return (drop)
+  }
+
+  function drawSplash(x, y, alpha) {
+    let num = Math.floor(Math.random() * 1.7 + 1)
+
+    let scale = (y / (canvas.height / 2) * 0.5) + 0.5
+    // scale = 1;
+
+    for (let i = 0; i < num; i++) {
+      let height = splashSize * (Math.random() + 0.5) * scale;
+      let dist = splashSize * (Math.random() + 0.5) * scale;
+      let angle = (Math.random() - 0.6) * 55;
+
+      ctx.save();
+
+      ctx.lineWidth = 2;
+
+      ctx.translate(x, y);
+
+      ctx.rotate(angle * Math.PI / 180)
+      ctx.translate(-x, -y); // Then translate the context back.
+
+      ctx.beginPath();
+      ctx.strokeStyle = `rgba(180,180,200,${alpha})`
+
+      ctx.moveTo(x, y - dist);
+      ctx.lineTo(x, y - dist - height);
+      ctx.stroke();
+
+      ctx.restore();
+    }
+  }
+
+  function drawDrop(drop, dt, i) {
+
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = `rgba(180,180,200,${drop.alpha})`
+    ctx.beginPath();
+    ctx.moveTo(drop.x, drop.y)
+    ctx.lineTo(drop.x + (drop.height / drop.slope), drop.y + drop.height);
+    ctx.stroke();
+
+
+    drop.y += dt * drop.speed
+    drop.x += (dt * drop.speed) / drop.slope
+
+    if (drop.y > drop.cut) {
+      if (Math.random() > 0.3) {
+        splashes.push({ x: drop.x + (drop.height / drop.slope), y: drop.y + drop.height, alpha: drop.alpha })
+      }
+      drops[i] = createDrop()
+    }
+
+  }
+
+  let drops = [];
+  let splashes = [];
+
+  for (let i = 0; i < 120; i++) {
+    drops.push(createDrop());
+  }
+
+  let thunderTime = 10000;
+
+  function draw(timestamp) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    if (start === undefined) {
+      start = timestamp;
+      lastTimeStamp = timestamp;
+      previousTimeStamp = timestamp;
+    }
+
+    const totalElapsed = timestamp - start;
+    const cycleElapsed = timestamp - previousTimeStamp;
+    const dt = timestamp - lastTimeStamp;
+    lastTimeStamp = timestamp;
+
+    splashes.forEach(splash => drawSplash(splash.x, splash.y, splash.alpha));
+    splashes = [];
+
+    drops.forEach((d, idx) => drawDrop(d, dt, idx));
+
+    if (cycleElapsed > thunderTime && lightningFlash === null) {
+      lightningFlash = timestamp;
+      if (audioActive) {
+        document.getElementById('thunder').currentTime = 0;
+        document.getElementById('thunder').volume = 0.6 + Math.random() * 0.15;
+        // document.getElementById('thunder').play();
+
+        setTimeout(() => document.getElementById('thunder').play(), 600 + 800 * Math.random())
+      }
+    }
+
+    if (lightningFlash !== null) {
+      ctx.fillStyle = 'rgba(256,256,256,0.3)'
+      // console.log('lightning active')
+      if ((timestamp - lightningFlash) % 300 < 200) {
+
+        // console.log('flashing')
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+
+      if (timestamp - lightningFlash > 700) {
+        // console.log('lightning off')
+        lightningFlash = null;
+        previousTimeStamp = timestamp;
+        thunderTime = Math.random() * 9000 + 13000;
+      }
+    }
+
+
+    requestAnimationFrame(draw);
+  }
+
+
+  requestAnimationFrame(draw);
+
+
+</script>
+
+</html>

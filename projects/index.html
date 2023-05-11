@@ -69,10 +69,19 @@
       line-height: 1.2;
       -webkit-font-smoothing: antialiased;
       font-family: LatinModernMono, "Courier New", Courier, monospace;
-      /* background: black; */
-      background: rgb(3 23 70);
+      background: black;
       color: #fffdec;
       /* font-weight: bold; */
+      animation: fadeBg 1s ease forwards;
+    }
+    @keyframes fadeBg {
+      from{
+        background: black;
+      }
+      to{
+        background: rgb(3 23 70);
+      }
+      
     }
 
     h1 {
@@ -111,7 +120,18 @@
       /* min-height: 100%; */
       padding-top: 50px;
       padding: 50px 20px;
+      opacity: 0.01;
+      animation: fadeIn 1s ease forwards 0.2s;
     }
+    @keyframes fadeIn {
+      from{
+        opacity:0.01;
+      }to{
+        opacity:1;
+      }
+      
+    }
+
     .info{
       position: sticky;
       top: 100px;
@@ -186,7 +206,7 @@
         vanilla JS</p>
       <p><a href="https://www.natedonato.com/wordniktest/">BandNames</a> - A tool for generating new band names, powered
         by
-        <a>Wordnik</a> api integration
+        <a href="https://developer.wordnik.com/gettingstarted">Wordnik</a> api integration
       </p>
       <p><a href="https://www.natedonato.com/zenboxes/">Zen boxes</a> - Relaxing visualizer / browser toy, pure CSS and
         JS

@@ -103,6 +103,7 @@ a {
   border-left: 1px solid white;
   margin-left: 20px;
   width: 300px;
+  max-width: 100%;
 }
 
 a,
@@ -148,6 +149,8 @@ footer {
 @media (max-width: 600px) {
   .content-container {
     flex-direction: column;
+    max-width: 100%;
+    padding: 10px;
   }
   .colA {
     text-align: left;
@@ -166,10 +169,28 @@ footer {
     text-align: center;
     left: 50%;
     transform: translate(-50%, 0);
+    display: block;
+    position: relative;
   }
 
-  .li {
-    margin: 8px;
+  .social-container button::after{
+    content: ":"
+  } 
+
+  
+  .social-container{
+    margin-top: 25px;
+  }
+
+  li {
+    margin: 8px 0px;
+    width: 100%;
+  }
+  
+
+  li a{
+    width: 100%;
+    display: block;
   }
 
   .social-links li {
