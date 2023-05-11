@@ -28,8 +28,9 @@
           <li><a href="https://www.natedonato.com/generative/">GenArt</a></li>
           <!-- <li><a href="./blog">Blog</a></li> -->
           <li><a href="./zines/">Zines</a></li>
-          <li class="social-container"><button>Social links</button>
-            <ul class="social-links">
+          <li class="social-container"><button id="social">Social links</button>
+            <li id="social-mobile">Social links:</li>
+            <ul id="social-links" class="social-links">
               <li><a target="_blank" href="https://codepen.io/natedonato/">CodePen</a></li>
               <li><a target="_blank" href="https://github.com/natedonato/">GitHub</a></li>
               <li><a target="_blank" href="https://www.linkedin.com/in/natedonato/">LinkedIn</a></li>
@@ -59,6 +60,12 @@
         link.style.color = `hsl(${(randomHue + randomOffset * index * randomSign) % 360}, 70%, 69%)`
       }
     }
+
+    document.getElementById("social").addEventListener("click", () =>{
+      document.getElementById("social-links").style.display = document.getElementById("social-links").style.display === "block" ? "none" : "block";
+    })
+
+
   </script>
 </body>
 

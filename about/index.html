@@ -30,6 +30,8 @@
     html,
     body {
       height: 100%;
+      -webkit-tap-highlight-color: transparent;
+
     }
 
     img,
@@ -72,6 +74,15 @@
       animation: fadeIn 2s ease forwards;
     }
 
+    a:focus,
+    span:focus {
+      outline: 2px dashed;
+      outline-offset: 2px;
+      border-radius: 4px;
+
+      text-decoration: none;
+    }
+
 
     @keyframes fadeIn {
       from {
@@ -101,7 +112,7 @@
     a.visited {
       color: inherit;
       text-decoration: none;
-      transition: all 1s ease;
+      transition: color 1s ease;
     }
 
     span {
@@ -161,7 +172,8 @@
       cursor: pointer;
     }
 
-    span:hover>.popup {
+    span:hover>.popup,
+    span:focus>.popup {
       display: block;
       visibility: visible;
     }
@@ -421,8 +433,10 @@
 
       </div>
       <div class="content">
-        <p>I'm <span title="Yep, thats me">Nate Donato<img class="popup" src="../assets/about/nate.jpg" alt="Nate Donato"></span>. I live in Oakland CA and root for the <span title="LETS GO OAKLAND">Athletics<img
-              class="popup" src="../assets/about/as.JPG" alt="As"></span>. I&#39;m bad at picking favorites, but
+        <p>I'm <span tabindex="0" title="Yep, thats me">Nate Donato<img class="popup" src="../assets/about/nate.jpg"
+              alt="Nate Donato"></span>. I live in Oakland CA and root for the <span tabindex="0"
+            title="LETS GO OAKLAND">Athletics<img class="popup" src="../assets/about/as.JPG" alt="As"></span>. I&#39;m
+          bad at picking favorites, but
           my
           favorite color has traditionally been green. I like coffee, dumplings, bonsai trees, and <a
             href="https://natedonato.com/rain">rainy days</a>. </p>
@@ -436,31 +450,31 @@
             href="https://natedonato.com/cv">CV</a> page.</p>
         <p>Prior to dev work, I did stints as a subsitute teacher (K-12), an SAT test prep tutor, and a grocery clerk at
           the
-          <a href="https://www.instagram.com/stargrocerberkeley/">best grocery store ever</a>. I <span
+          <a href="https://www.instagram.com/stargrocerberkeley/">best grocery store ever</a>. I <span tabindex="0"
             title="Shoutout to professors Chris Connery and Rob Wilson">graduated from UC Santa
             Cruz<img class="popup" src="../assets/about/ucsc.gif" alt="diploma">
           </span>
-          with a BA in Literature, which makes me a <span title="slug life 4 life">banana slug<img class="popup"
-              src="../assets/about/slug.jpeg" alt="banana slug"></span>.
+          with a BA in Literature, which makes me a <span tabindex="0" title="slug life 4 life">banana slug<img
+              class="popup" src="../assets/about/slug.jpeg" alt="banana slug"></span>.
         </p>
         <p>Outside of work I&#39;m always up to different stuff like making <a
             href="https://natedonato.com/games">games</a>
           and
           <a href="https://natedonato.com/generative">generative artwork</a> for fun, writing <a
-            href="https://natedonato.com/zines">zines</a>, drawing animated gifs, taking photos on my <span
+            href="https://natedonato.com/zines">zines</a>, drawing animated gifs, taking photos on my <span tabindex="0"
             title="Minolta x370">film camera<img class="popup" src="../assets/about/minolta.gif" alt=""></span>,
           studying
           Japanese, playing <a href="https://lichess.org/@/naet">Chess</a> or <a
             href="https://online-go.com/player/787153/" style="white-space: nowrap;">
             Go (囲碁)</a>, making music, enjoying rainy days, reading the Sunday
           newspaper,
-          or spending time with my <span title="Dom, LOML">beautiful partner<img class="popup" src="../assets/about/dom.gif
+          or spending time with my <span tabindex="0" title="Dom, LOML">beautiful partner<img class="popup" src="../assets/about/dom.gif
             " alt="Dom"></span> and new baby boy.
         </p>
         <p>If you&#39;re interested in hiring me please reach out via <a
             href="https://www.linkedin.com/in/natedonato/">LinkedIn</a>. If you&#39;re interested in friendship please
           please
-          reach out via <span title="Pigeon post being preferred">other channels<img class="popup"
+          reach out via <span tabindex="0" title="Pigeon post being preferred">other channels<img class="popup"
               src="../assets/about/pigeon.gif" alt="pigeon"></span>.</p>
         <p>Thanks for stopping by my little web corner! Hope you enjoy the stay.</p>
         <p><a href="../">&lt;== Go back home</a></p>
